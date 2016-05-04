@@ -12,7 +12,7 @@ public class Client extends JFrame implements ActionListener
 {	
 	//global declarations as needed
 	JButton submitButton = new JButton("Submit");
-	JTextField fileNameTextFIeld = new JTextField(10);
+	JTextField fileNameTextFIeld = new JTextField(20);
 	static String filename;
 	
 	//constructor
@@ -23,8 +23,8 @@ public class Client extends JFrame implements ActionListener
 		Container contentPane = getContentPane();
 		JPanel panel = new JPanel();
 		
-		JLabel fileNameLabel = new JLabel("Enter the file location:");
-		fileNameTextFIeld.setText("/Users/Desktop/source.txt");
+		JLabel fileNameLabel = new JLabel("Enter the file location: ");
+		fileNameTextFIeld.setText("/Users/Erebus/Desktop/source.txt");
 		submitButton.addActionListener(this);
 		
 		panel.add(fileNameLabel, BorderLayout.CENTER);
@@ -32,7 +32,7 @@ public class Client extends JFrame implements ActionListener
 		panel.add(submitButton, BorderLayout.CENTER);
 		contentPane.add(panel);
 		
-		setSize(300,300);
+		setSize(250,250);
 		setVisible(true);
 	}
 	
@@ -77,6 +77,7 @@ public class Client extends JFrame implements ActionListener
 		JFrame frame = new Client();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
 	//method that needs to open a file from the File Server node
 	public static void getRemoteFile() throws MalformedURLException, RemoteException, NotBoundException
 	{

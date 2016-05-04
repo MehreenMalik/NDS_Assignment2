@@ -34,16 +34,13 @@ public class MyRemoteFileSystemImpl extends UnicastRemoteObject implements MyRem
 	//main method for the class that starts the server
 	public static void main(String[]args) throws RemoteException
 	{
-		//start the server by instantiating an instance of the class
+		//start the server
 		MyRemoteFileSystemImpl rfs = new MyRemoteFileSystemImpl();
-		//create a string that represents the location of the registry and the name of a remote object 
-		//used by a client to invoke the service
 		String serverobjectname = "//localhost/remoteobject";
-		//we assume that the registry resides localhost (or it can be the ip address of another node
-		//proceed to register the remote object with the registry
 		try 
 		{
 			Naming.rebind(serverobjectname, rfs);
+			System.out.println("MyRemoteFileSystem RMI Server is running...");
 		}
 		catch (RemoteException | MalformedURLException e) 
 		{
