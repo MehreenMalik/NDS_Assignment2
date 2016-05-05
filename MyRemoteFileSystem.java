@@ -6,6 +6,6 @@ public interface MyRemoteFileSystem extends Remote
 {
 	public int openFile(String name) throws IOException;
 	public int deleteFile(String name) throws IOException;
-	public int renameFile(String name) throws IOException;
+	public int renameFile(String name, String newFilename) throws IOException;
 	public int createDirectory(String name) throws IOException;
 }

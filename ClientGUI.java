@@ -17,6 +17,7 @@ class ClientGUI extends JFrame implements ActionListener
 	static JTextField openFileTextField = new JTextField("C:\\Users\\Erebus\\Desktop\\Test\\source.txt",25);
 	static JTextField deleteFileTextField = new JTextField("C:\\Users\\Erebus\\Desktop\\Test\\poop",25);
 	static JTextField renameFileTextField = new JTextField("C:\\Users\\Erebus\\Desktop\\Test\\example.txt",25);
+	static JTextField newNameTextField = new JTextField("C:\\Users\\Erebus\\Desktop\\Test\\",25);
 	static JTextField createDirectoryTextField = new JTextField("C:\\Users\\Erebus\\Desktop\\Test\\example",25);
 	static JTextArea DisplayArea = new JTextArea(50, 50);
 
@@ -29,7 +30,8 @@ class ClientGUI extends JFrame implements ActionListener
 
 		JLabel openFileLabel = new JLabel("Enter a name to open:");
 		JLabel deleteFileLabel = new JLabel("Enter a name to delete:");
-		JLabel renameFileLabel = new JLabel("Enter a name to rename:");
+		JLabel renameFileLabel = new JLabel("Enter a file/dir to rename:");
+		JLabel newNameFileLabel = new JLabel("Enter the new name:");
 		JLabel createDirectoryLabel = new JLabel("Enter a new directory name:");
 
 		panel.add(openFileLabel);
@@ -45,6 +47,8 @@ class ClientGUI extends JFrame implements ActionListener
 
 		panel.add(renameFileLabel);
 		panel.add(renameFileTextField);
+		panel.add(newNameFileLabel);
+		panel.add(newNameTextField);
 		panel.add(renameFileButton);
 		renameFileButton.addActionListener(this);
 
@@ -66,7 +70,7 @@ class ClientGUI extends JFrame implements ActionListener
 	{
 		try
 		{
-
+			DisplayArea.setText("");
 			showDir(new File("C:\\Users\\Erebus\\Desktop\\test"));
 		}
 		catch(IOException e2)
@@ -180,11 +184,12 @@ class ClientGUI extends JFrame implements ActionListener
 	public static void renameFile() throws MalformedURLException, RemoteException, NotBoundException
 	{
 		String filename = renameFileTextField.getText();
+		String newFilename = newNameTextField.getText();
 		String serverobjectname = "//localhost/remoteobject";
 		MyRemoteFileSystem myfile = (MyRemoteFileSystem)Naming.lookup(serverobjectname);
 		try
 		{
-			int c = myfile.renameFile(filename);
+			int c = myfile.renameFile(filename,newFilename);
 		}
 		catch (IOException e)
 		{
