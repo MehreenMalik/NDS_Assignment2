@@ -46,7 +46,7 @@ public class MyRemoteFileSystemImpl extends UnicastRemoteObject implements MyRem
 	public int renameFile(String name) throws IOException
 	{
 		File oldFileName = new File(name);
-		File newfile =new File("newfile.txt");
+		File newfile =new File("C:\\Users\\Erebus\\Desktop\\Test\\newD");
 
 		if(oldFileName.renameTo(newfile))
 		{
